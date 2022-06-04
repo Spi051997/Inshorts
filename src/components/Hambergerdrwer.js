@@ -1,27 +1,17 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
-import BusinessIcon from '@mui/icons-material/Business';
-import CasinoIcon from '@mui/icons-material/Casino';
-import SportsCricketIcon from '@mui/icons-material/SportsCricket';
-import BiotechIcon from '@mui/icons-material/Biotech';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import MenuIcon from "@mui/icons-material/Menu";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Category from "../data/Category";
 
-import Container from '@mui/material/Container';
-import Category from '../data/Category'
-
-export default function Hambergerdrwer({setcategory}) {
+export default function Hambergerdrwer({ setcategory }) {
   // console.log(setcategory);
   const [state, setState] = React.useState({
     top: false,
@@ -32,13 +22,15 @@ export default function Hambergerdrwer({setcategory}) {
 
   const darkTheme = createTheme({
     palette: {
-      mode: 'dark',
-    
+      mode: "dark",
     },
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
@@ -46,23 +38,27 @@ export default function Hambergerdrwer({setcategory}) {
   };
 
   const list = (anchor) => (
-  
-   
     <Box
-      sx={{ paddingLeft:0.6,paddingRight:1,   width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 200 }}
+      sx={{
+        paddingLeft: 0.6,
+        paddingRight: 1,
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 200,
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <ListItem  className='ListCategoty'>
-      Category
-      </ListItem>
-     
-      
+      <ListItem className="ListCategoty">Category</ListItem>
+
       <Divider />
       <List>
         {Category.map((text, index) => (
-          <ListItem  button  key={text} disablePadding  onClick={()=>setcategory(text)}>
+          <ListItem
+            button
+            key={text}
+            disablePadding
+            onClick={() => setcategory(text)}
+          >
             <ListItemButton>
               {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -73,16 +69,15 @@ export default function Hambergerdrwer({setcategory}) {
         ))}
       </List>
     </Box>
-    
   );
 
   return (
     <div>
-      
-      
-        <React.Fragment key={"left"}>
-          <Button onClick={toggleDrawer("left", true)}><MenuIcon /></Button>
-          <ThemeProvider theme={darkTheme}>
+      <React.Fragment key={"left"}>
+        <Button onClick={toggleDrawer("left", true)}>
+          <MenuIcon />
+        </Button>
+        <ThemeProvider theme={darkTheme}>
           <Drawer
             anchor={"left"}
             open={state["left"]}
@@ -90,9 +85,8 @@ export default function Hambergerdrwer({setcategory}) {
           >
             {list("left")}
           </Drawer>
-          </ThemeProvider>
-        </React.Fragment>
-    
+        </ThemeProvider>
+      </React.Fragment>
     </div>
   );
 }
