@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Newscard from "../Newscard.js/Newscard";
 import './newscontent.css';
-const  newcontent=({newsarray,newresults})=> {
+const  newcontent=({newsarray,newresults,loadmore,setloadmore})=> {
     console.log(newsarray);
   return (
     <React.Fragment>
@@ -16,8 +16,16 @@ const  newcontent=({newsarray,newresults})=> {
              ))
         
           }
+          {
+              loadmore<=newresults &&(
+                  <>
+                   <button className="loadmore"
+                    onClick={()=>setloadmore(loadmore+20)}>Loadmore</button>
+                  </>
+              )
+          }
         
-          <button className="loadmore">Loadmore</button>
+         
      
       </Container>
   </React.Fragment>
