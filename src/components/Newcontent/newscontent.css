@@ -1,0 +1,17 @@
+#contanier
+{
+    padding: 20px;
+    align-items: initial;
+   
+}
+.loadmore
+{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 33px;
+    width: 83px;
+    border-radius: 20px;
+    border: none;
+   background-color: aliceblue;
+    font-size: 12px;
+
+}
